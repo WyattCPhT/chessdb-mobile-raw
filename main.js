@@ -6,6 +6,7 @@ $(() => {
     const $moveList = $("#move-list");
     const $pgn = $("#pgn");
     const $goback = $("#go-back");
+    const $goforward = $("#go-forward");
     const $queryInfo = $("#query-info");
     const $statusDisplay = $("#status-display");
     const $whiteSortOptions = $("#white-sort-options");
@@ -219,6 +220,14 @@ $(() => {
     $($goback).on("click", () => {
         game.undo();
         board.position(game.fen());
+    });
+
+    $($goforward).on("click", () => {
+        if (sortedQueryInfo[0] !== undefined) {
+            game.move({ from: sortedQueryInfo[0].move.substring(0, 2), to: sortedQueryInfo[0].move.substring(2, 4) });
+            board.position(game.fen());
+            onBoardUpdate();
+        }
     });
 
     $eval.text("+0.00");
