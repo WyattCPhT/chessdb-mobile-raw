@@ -89,10 +89,10 @@ $(() => {
 
             let explorerInfo;
             if(!$masters.is(":checked"))
-                explorerInfo = await fetch(`https://explorer.lichess.ovh/lichess?fen=${encodeURIComponent(game.fen())}`)
+                explorerInfo = await fetch(`https://explorer.lichess.ovh/lichess?fen=${encodeURIComponent(game.fen())}&ratings=0`)
                 .then(response => response.json());
             else
-                explorerInfo = await fetch(`https://explorer.lichess.ovh/lichess?fen=${encodeURIComponent(game.fen())}`)
+                explorerInfo = await fetch(`https://explorer.lichess.ovh/lichess?fen=${encodeURIComponent(game.fen())}&ratings=0`)
                 .then(response => response.json());
 
             let white = explorerInfo.white;
