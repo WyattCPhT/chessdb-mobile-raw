@@ -36,7 +36,7 @@ $(() => {
 
     async function fetchChessDbData() {
         $statusDisplay.text("Requesting...");
-        const response = await fetch(`http://www.chessdb.cn/cdb.php?action=queryall&board=${encodeURIComponent(game.fen())}`);
+        const response = await fetch(`https://www.chessdb.cn/cdb.php?action=queryall&board=${encodeURIComponent(game.fen())}`);
         const moves = await response.text();
 
         const uniqueMoves = new Set();
