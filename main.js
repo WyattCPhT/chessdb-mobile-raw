@@ -36,7 +36,7 @@ $(() => {
 
     async function fetchChessDbData() {
         $statusDisplay.text("Requesting...");
-        const response = await fetch(`https://www.chessdb.cn/cdb.php?action=queryall&board=${encodeURIComponent(game.fen())}`);
+        const response = await fetch(`http://www.chessdb.cn/cdb.php?action=queryall&board=${encodeURIComponent(game.fen())}`);
         const moves = await response.text();
 
         const uniqueMoves = new Set();
@@ -89,10 +89,10 @@ $(() => {
 
             let explorerInfo;
             if(!$masters.is(":checked"))
-                explorerInfo = await fetch(`https://explorer.lichess.ovh/lichess?fen=${encodeURIComponent(game.fen())}`)
+                explorerInfo = await fetch(`https://explorer.lichess.ovh/lichess?ratings=0&fen=${encodeURIComponent(game.fen())}`)
                 .then(response => response.json());
             else
-                explorerInfo = await fetch(`https://explorer.lichess.ovh/lichess?fen=${encodeURIComponent(game.fen())}`)
+                explorerInfo = await fetch(`https://explorer.lichess.ovh/lichess?ratings=0&fen=${encodeURIComponent(game.fen())}`)
                 .then(response => response.json());
 
             let white = explorerInfo.white;
